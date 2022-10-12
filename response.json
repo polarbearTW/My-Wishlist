@@ -1,0 +1,9 @@
+[
+    {
+        "placename": "test",
+        "location": "test",
+        "price": "100",
+        "link": "https:\/\/test.com",
+        "submit": "add"
+    }
+]
