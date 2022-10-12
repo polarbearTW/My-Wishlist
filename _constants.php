@@ -1,4 +1,4 @@
 <?php
-$FILENAME = "/Applications/XAMPP/xamppfiles/htdocs/miniproject_myplaces/response.json";
+$FILENAME = __dir__. "/response.json";
 $submitted = isset($_POST["submit"]) ? true: false;
 ?>
