@@ -20,7 +20,7 @@ include "_functions.php";
 
         <div class="btn">
         <button type="button">
-        <a href="../miniproject_myplaces/index.php">Add a Place</a>
+        <a href="./index.php">Add a Place</a>
         </button>
         </div>
 

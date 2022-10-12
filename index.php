@@ -46,7 +46,7 @@ include "_functions.php";
 
             <div class="btn">
             <button type="button">
-            <a href="../miniproject_myplaces/response.php">See Saved Places</a>  
+            <a href="./response.php">See Saved Places</a>  
             </button>
             </div>
 
