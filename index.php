@@ -46,15 +46,15 @@ include "_functions.php";
 
             <div class="btn">
             <button type="button">
-            <a href="./response.php">See Saved Places</a>  
+            <a href="./response.php">See My Wishlist</a>  
             </button>
             </div>
 
             <div class="table">
-                Place Name: <input type="text" name="placename" /><br>
-                Country/City: <input type="text" name="location" /><br>
-                Price: (KRW): <input type="text" name="price" /><br>
-                Link: <input type="url" name="link" /><br>
+                Place Name: <input type="text" name="placename" value="<?php if($_POST){echo $_POST["placename"];}?>"/><br>
+                Country/City: <input type="text" name="location" value="<?php if($_POST){echo $_POST["location"];}?>"/><br>
+                Price: (KRW): <input type="text" name="price" value="<?php if($_POST){echo $_POST["price"];}?>"/><br>
+                Link: <input type="url" name="link" value="<?php if($_POST){echo $_POST["link"];}?>"/><br>
             </div>
             
             <div class="submit">

@@ -74,7 +74,7 @@ function price(){
 // a function to display URL
 function url(){
     global $FILENAME; 
-    
+
     $data=$_POST;
     $file=fopen($FILENAME, 'r');
     $size = filesize($FILENAME);
@@ -98,6 +98,8 @@ function url(){
 function checkANS(){
     if($_POST["placename"] == "" || $_POST["location"] == "" || $_POST["price"] == "" || $_POST["link"] == ""){
         echo "<div id=\"warning\">Please fill out all the blanks.</div>";
+        } else {
+            echo "<div id=\"warning\">Successfully submitted! Check My Wishlist for saved places.</div>";
         }
 }
 

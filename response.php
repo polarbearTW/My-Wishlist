@@ -54,7 +54,7 @@ include "_functions.php";
             </div>
             
             <div class="box">
-                <div class="category">Link:</div>
+                <div class="category">Link</div>
                 <div class="content">
                     <?php
                 url();                
