@@ -22,11 +22,11 @@ button {
 }
 
 .bgColor {
-    width: 750px;
+    width: 890px;
     height: 35px;
     background-color: #FFD750;
     position: absolute;
-    left: 350px;
+    left: 250px;
     top: 130px;
 }
 
@@ -51,6 +51,9 @@ button {
 .content {
     width: 200px;
     margin-top: 5px;
+    word-wrap: break-word;
+    display: flex;
+    flex-direction: column;
 }
 
 a {
@@ -85,3 +88,8 @@ a {
     left: 400px;
 }
 
+#funcBTN {
+    width: 60px;
+    text-align: left;
+    margin-bottom: 5px;
+}

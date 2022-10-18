@@ -6,7 +6,6 @@ function placename(){
     //use global to get the path outside the function
     global $FILENAME; 
 
-    $data=$_POST;
     $file=fopen($FILENAME, 'r');
     $size = filesize($FILENAME);
 
@@ -29,7 +28,6 @@ function placename(){
 function location(){
     global $FILENAME; 
 
-    $data=$_POST;
     $file=fopen($FILENAME, 'r');
     $size = filesize($FILENAME);
 
@@ -52,7 +50,6 @@ function location(){
 function price(){
     global $FILENAME; 
 
-    $data=$_POST;
     $file=fopen($FILENAME, 'r');
     $size = filesize($FILENAME);
 
@@ -75,7 +72,6 @@ function price(){
 function url(){
     global $FILENAME; 
 
-    $data=$_POST;
     $file=fopen($FILENAME, 'r');
     $size = filesize($FILENAME);
 
@@ -94,6 +90,27 @@ function url(){
     }
 }
 
+
+// a function to add button
+function button(){
+    global $FILENAME; 
+
+    $file=fopen($FILENAME, 'r');
+    $size = filesize($FILENAME);
+
+    if($size>0){
+        $content = fread($file, $size);
+        fclose($file);
+        $obj=json_decode($content, true);
+
+        //add buttons for each entry
+        $length=count($obj);
+        for($i=0; $i<$length; $i++){
+            echo "<button id=\"funcBTN\">Delete</button>";
+        }
+    }
+}
+
 // a function to check if the answers are valid
 function checkANS(){
     if($_POST["placename"] == "" || $_POST["location"] == "" || $_POST["price"] == "" || $_POST["link"] == ""){
@@ -103,6 +120,14 @@ function checkANS(){
         }
 }
 
+// a function to check if the answers are valid and return true/false
+function checkANS2(){
+    if($_POST["placename"] == "" || $_POST["location"] == "" || $_POST["price"] == "" || $_POST["link"] == ""){
+        return false;
+        } else {
+        return true;
+        }
+}
 
 // a function to go and get current data 
 function getdata() {
@@ -122,7 +147,7 @@ function getdata() {
     }
 }
 
-//a function to write data
+//a function to write data (with encode: array to string)
 function writedata($obj){
     global $FILENAME;
     $newdata= json_encode($obj, JSON_PRETTY_PRINT);
@@ -131,4 +156,42 @@ function writedata($obj){
     fclose($file2);    
 }
 
+//a function to write data
+function write($FILENAME, $string){
+    $file = fopen($FILENAME, 'w+');
+    fwrite($file, $string);
+    fclose($file);    
+}
+
+function deleteEntry($place_name){
+    global $FILENAME;
+    $entries = getdata();
+
+    $new_Ans = [];
+    foreach($entries as $place){
+        if ($place["placename"]!= $place_name){
+            array_push($new_Ans, $place); 
+        }
+    }
+
+    $newData = json_encode($new_Ans, JSON_PRETTY_PRINT);
+    write($FILENAME, $newData);
+}
+
+function editEntry($place_name, $replaced_entry) {
+    global $FILENAME;
+    $entries = getdata();
+
+    $new_Ans = [];
+    foreach($entries as $place){
+        if ($place["placename"]== $place_name){
+            array_push($new_Ans, $replaced_entry); 
+        } else{
+            array_push($new_Ans, $place);
+        }
+    }
+
+    $newData = json_encode($new_Ans, JSON_PRETTY_PRINT);
+    write($FILENAME, $newData);
+}
 ?>

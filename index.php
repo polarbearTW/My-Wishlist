@@ -22,7 +22,12 @@ include "_functions.php";
 
         checkANS();
         if($_POST["placename"] !== "" && $_POST["location"] !== "" && $_POST["price"] !== "" && $_POST["link"] !== "") {
-            $data=$_POST;
+            $data = [
+                "placename" => $_POST["placename"],
+                "location" => $_POST["location"],
+                "price" => $_POST["price"],
+                "link" => $_POST["link"]
+            ];
         
             //go and get all the current data
             // 1- open/read/close the file (as a string)
@@ -49,12 +54,13 @@ include "_functions.php";
             <a href="./response.php">See My Wishlist</a>  
             </button>
             </div>
-
+            
             <div class="table">
-                Place Name: <input type="text" name="placename" value="<?php if($_POST){echo $_POST["placename"];}?>"/><br>
-                Country/City: <input type="text" name="location" value="<?php if($_POST){echo $_POST["location"];}?>"/><br>
-                Price: (KRW): <input type="text" name="price" value="<?php if($_POST){echo $_POST["price"];}?>"/><br>
-                Link: <input type="url" name="link" value="<?php if($_POST){echo $_POST["link"];}?>"/><br>
+                <!--use checkANS2() to check if there's blank answer, if so, keep the original text even submitted the form  -->
+                Place Name: <input type="text" name="placename" value="<?php if($submitted){if (checkANS2()==false){echo $_POST["placename"];}} ?>"/><br>
+                Country/City: <input type="text" name="location" value="<?php if($submitted){if(checkANS2()==false){echo $_POST["location"];}}?>"/><br>
+                Price: (KRW): <input type="text" name="price" value="<?php if($submitted){if(checkANS2()==false){echo $_POST["price"];}}?>"/><br>
+                Link: <input type="url" name="link" value="<?php if($submitted){if(checkANS2()==false){echo $_POST["link"];}}?>"/><br>
             </div>
             
             <div class="submit">
