@@ -1,8 +1,8 @@
 <?php
 include "_constants.php";
 
-// a function to display place name
-function placename(){
+// a function to display a place row
+function places(){
     //use global to get the path outside the function
     global $FILENAME; 
 
@@ -18,99 +18,21 @@ function placename(){
         $length=count($obj);
         for($i=0; $i<$length; $i++){
             $place = $obj[$i]["placename"];
-            echo $place;
-            echo '<br>';
-        }
-    }
-}
-
-// a function to display location
-function location(){
-    global $FILENAME; 
-
-    $file=fopen($FILENAME, 'r');
-    $size = filesize($FILENAME);
-
-    if($size>0){
-        $content = fread($file, $size);
-        fclose($file);
-        $obj=json_decode($content, true);
-
-        //display items in the array
-        $length=count($obj);
-        for($i=0; $i<$length; $i++){
             $location = $obj[$i]["location"];
-            echo $location;
-            echo '<br>';
-        }
-    }
-}
-
-// a function to display price
-function price(){
-    global $FILENAME; 
-
-    $file=fopen($FILENAME, 'r');
-    $size = filesize($FILENAME);
-
-    if($size>0){
-        $content = fread($file, $size);
-        fclose($file);
-        $obj=json_decode($content, true);
-
-        //display items in the array
-        $length=count($obj);
-        for($i=0; $i<$length; $i++){
             $price = $obj[$i]["price"];
-            echo $price;
-            echo '<br>';
-        }
-    }
-}
-
-// a function to display URL
-function url(){
-    global $FILENAME; 
-
-    $file=fopen($FILENAME, 'r');
-    $size = filesize($FILENAME);
-
-    if($size>0){
-        $content = fread($file, $size);
-        fclose($file);
-        $obj=json_decode($content, true);
-
-        //display items in the array
-        $length=count($obj);
-        for($i=0; $i<$length; $i++){
             $url = $obj[$i]["link"];
-            echo $url;
-            echo '<br>';
-        }
-    }
-}
 
-
-// a function to add button
-function button(){
-    global $FILENAME; 
-
-    $file=fopen($FILENAME, 'r');
-    $size = filesize($FILENAME);
-
-    if($size>0){
-        $content = fread($file, $size);
-        fclose($file);
-        $obj=json_decode($content, true);
-
-        //add buttons for each entry
-        $length=count($obj);
-        for($i=0; $i<$length; $i++){
-            $button = $obj[$i]["id"];
-
-            echo '<form method="post" action="">';
-            echo '<button name="delete" value="'.$button.'" id="funcBTN">Delete</button>';
-            echo '</form>';
+            echo '<tr>';
+            echo '  <td>' . $place . '</td>';
+            echo '  <td>' . $location . '</td>';
+            echo '  <td>' . $price . '</td>';
+            echo '  <td>' . $url . '</td>';
+            echo '  <td>'; 
+            echo '    <form method="post" action="">';
+            echo '      <button name="delete" value="'.$button.'" id="funcBTN">Delete</button>';
+            echo '    </form>';
+            echo '  </td>';
+            echo '</tr>';
         }
     }
 }
