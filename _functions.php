@@ -5,6 +5,7 @@ include "_constants.php";
 function places(){
     //use global to get the path outside the function
     global $FILENAME; 
+    clearstatcache();
 
     $file=fopen($FILENAME, 'r');
     $size = filesize($FILENAME);
@@ -22,7 +23,7 @@ function places(){
             $price = $obj[$i]["price"];
             $url = $obj[$i]["link"];
             $button = $obj[$i]["id"];
-            
+
             echo '<tr>';
             echo '  <td>' . $place . '</td>';
             echo '  <td>' . $location . '</td>';
@@ -31,6 +32,11 @@ function places(){
             echo '  <td>'; 
             echo '    <form method="post" action="">';
             echo '      <button name="delete" value="'.$button.'" id="funcBTN">Delete</button>';
+            echo '    </form>';
+            echo '  </td>';
+            echo '  <td>';
+            echo '    <form method="post" action="">';
+            echo '      <button name="change" value="'.$button.'" id="funcBTN">Change</button>';
             echo '    </form>';
             echo '  </td>';
             echo '</tr>';
@@ -108,6 +114,8 @@ function deleteEntry($id){
 function editEntry($id, $replaced_id) {
     global $FILENAME;
     $entries = getdata();
+
+    $replaced_id["id"] = $id;
 
     $new_Ans = [];
     foreach($entries as $place){

@@ -9,6 +9,13 @@ include "_functions.php";
 
 if (isset($_POST["delete"])){
     deleteEntry($_POST["delete"]);
+} else if (isset($_POST["change"])){
+    editEntry($_POST["change"], [
+        "placename"=> "Some Other Place",
+        "location"=> "Some Other Location",
+        "price"=> "Some Other Price",
+        "link"=> "https://other.com",
+    ]);
 };
 
 ?>
