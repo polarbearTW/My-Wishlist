@@ -23,6 +23,7 @@ include "_functions.php";
         checkANS();
         if($_POST["placename"] !== "" && $_POST["location"] !== "" && $_POST["price"] !== "" && $_POST["link"] !== "") {
             $data = [
+                "id" => uniqid(),
                 "placename" => $_POST["placename"],
                 "location" => $_POST["location"],
                 "price" => $_POST["price"],
@@ -69,6 +70,6 @@ include "_functions.php";
         </form>
     </div>
       
-    <script src="./app.js"></script>
+    <!-- <script src="./app.js"></script> -->
 </body>
 </html>

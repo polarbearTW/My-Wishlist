@@ -6,6 +6,11 @@ include "_functions.php";
 // Use array_search(what you want to search, seatrch which array)
 // Use array_splice(which array, where to delete, delete how many items)
 
+
+if (isset($_POST["delete"])){
+    deleteEntry($_POST["delete"]);
+};
+
 ?>
 
 <!DOCTYPE html>
@@ -30,6 +35,7 @@ include "_functions.php";
         </div>
 
         <div class="whole">
+
             <table>
                 <thead class="bgColor">
                     <tr>
@@ -44,11 +50,7 @@ include "_functions.php";
                     <?php places() ?>
                 </tbody>
             </table>
+
         </div>
-        <!-- <script>
-            Todo: You need to use AJAX to run a php function:deleteEntry here
-            $button = document.getElementById("funcBTN");
-            $button.addEventListener("click", deleteEntry($place_name));
-        </script> -->
     </body>
 </html>
