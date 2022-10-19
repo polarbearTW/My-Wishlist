@@ -21,7 +21,8 @@ function places(){
             $location = $obj[$i]["location"];
             $price = $obj[$i]["price"];
             $url = $obj[$i]["link"];
-
+            $button = $obj[$i]["id"];
+            
             echo '<tr>';
             echo '  <td>' . $place . '</td>';
             echo '  <td>' . $location . '</td>';
