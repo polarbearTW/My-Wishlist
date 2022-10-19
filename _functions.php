@@ -106,7 +106,11 @@ function button(){
         //add buttons for each entry
         $length=count($obj);
         for($i=0; $i<$length; $i++){
-            echo "<button id=\"funcBTN\">Delete</button>";
+            $button = $obj[$i]["id"];
+
+            echo '<form method="post" action="">';
+            echo '<button name="delete" value="'.$button.'" id="funcBTN">Delete</button>';
+            echo '</form>';
         }
     }
 }
@@ -163,13 +167,13 @@ function write($FILENAME, $string){
     fclose($file);    
 }
 
-function deleteEntry($place_name){
+function deleteEntry($id){
     global $FILENAME;
     $entries = getdata();
 
     $new_Ans = [];
     foreach($entries as $place){
-        if ($place["placename"]!= $place_name){
+        if ($place["id"]!= $id){
             array_push($new_Ans, $place); 
         }
     }
@@ -178,14 +182,14 @@ function deleteEntry($place_name){
     write($FILENAME, $newData);
 }
 
-function editEntry($place_name, $replaced_entry) {
+function editEntry($id, $replaced_id) {
     global $FILENAME;
     $entries = getdata();
 
     $new_Ans = [];
     foreach($entries as $place){
-        if ($place["placename"]== $place_name){
-            array_push($new_Ans, $replaced_entry); 
+        if ($place["id"]== $id){
+            array_push($new_Ans, $replaced_id); 
         } else{
             array_push($new_Ans, $place);
         }

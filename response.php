@@ -6,6 +6,11 @@ include "_functions.php";
 // Use array_search(what you want to search, seatrch which array)
 // Use array_splice(which array, where to delete, delete how many items)
 
+
+if (isset($_POST["delete"])){
+    deleteEntry($_POST["delete"]);
+};
+
 ?>
 
 <!DOCTYPE html>
@@ -72,6 +77,7 @@ include "_functions.php";
                 <div class="category">Settings</div>
                 <div class="content">
                     <?php
+
                 button();   
                 // editEntry("test2", 
                 //     ["placename"=> "apple",
@@ -85,10 +91,5 @@ include "_functions.php";
                 </div>
             </div>
         </div>
-        <!-- <script>
-            Todo: You need to use AJAX to run a php function:deleteEntry here
-            $button = document.getElementById("funcBTN");
-            $button.addEventListener("click", deleteEntry($place_name));
-        </script> -->
     </body>
 </html>
