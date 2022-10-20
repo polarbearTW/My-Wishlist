@@ -54,7 +54,36 @@ if (isset($_POST["delete"])){
                     </tr>
                 </thead>
                 <tbody>
-                    <?php places() ?>
+                    <?php 
+                        $obj = get_places();
+
+                        //display items in the array
+                        $length=count($obj);
+                        for($i=0; $i<$length; $i++){
+                            $place = $obj[$i]["placename"];
+                            $location = $obj[$i]["location"];
+                            $price = $obj[$i]["price"];
+                            $url = $obj[$i]["link"];
+                            $button = $obj[$i]["id"];
+                
+                            echo '<tr>';
+                            echo '  <td>' . $place . '</td>';
+                            echo '  <td>' . $location . '</td>';
+                            echo '  <td>' . $price . '</td>';
+                            echo '  <td>' . $url . '</td>';
+                            echo '  <td>'; 
+                            echo '    <form method="post" action="">';
+                            echo '      <button name="delete" value="'.$button.'" id="funcBTN">Delete</button>';
+                            echo '    </form>';
+                            echo '  </td>';
+                            echo '  <td>';
+                            echo '    <form method="post" action="">';
+                            echo '      <button name="change" value="'.$button.'" id="funcBTN">Change</button>';
+                            echo '    </form>';
+                            echo '  </td>';
+                            echo '</tr>';
+                        }
+                    ?>
                 </tbody>
             </table>
 
