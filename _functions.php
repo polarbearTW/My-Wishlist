@@ -2,7 +2,7 @@
 include "_constants.php";
 
 // a function to display a place row
-function places(){
+function get_places(){
     //use global to get the path outside the function
     global $FILENAME; 
     clearstatcache();
@@ -15,33 +15,10 @@ function places(){
         fclose($file);
         $obj=json_decode($content, true);
 
-        //display items in the array
-        $length=count($obj);
-        for($i=0; $i<$length; $i++){
-            $place = $obj[$i]["placename"];
-            $location = $obj[$i]["location"];
-            $price = $obj[$i]["price"];
-            $url = $obj[$i]["link"];
-            $button = $obj[$i]["id"];
-
-            echo '<tr>';
-            echo '  <td>' . $place . '</td>';
-            echo '  <td>' . $location . '</td>';
-            echo '  <td>' . $price . '</td>';
-            echo '  <td>' . $url . '</td>';
-            echo '  <td>'; 
-            echo '    <form method="post" action="">';
-            echo '      <button name="delete" value="'.$button.'" id="funcBTN">Delete</button>';
-            echo '    </form>';
-            echo '  </td>';
-            echo '  <td>';
-            echo '    <form method="post" action="">';
-            echo '      <button name="change" value="'.$button.'" id="funcBTN">Change</button>';
-            echo '    </form>';
-            echo '  </td>';
-            echo '</tr>';
-        }
+        return $obj;
     }
+    
+    return [];
 }
 
 // a function to check if the answers are valid
